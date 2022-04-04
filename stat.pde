@@ -46,17 +46,17 @@ void scatterPlot() {
   stroke(white);
   rect(350,625,600,300);
   //axis and marker
-  fill(white);
-  line(100,475,100,775); //x-axis
-  line(50,725,650,725); //y- axis
   textSize(18);
+  fill(white);
+  line(100,475,100,775); //y-axis ==========
   text("50",75,625);
   text("100",75,525);
   text("25",75,675);
   text("75",75,575);
+  line(50,725,650,725); //x- axis ==========
+  text("Recent Games",332.5,750);
   
   //data display ===========================
-  strokeWeight(3);
   point(1);
   point(2);
   point(3);
@@ -69,10 +69,13 @@ void scatterPlot() {
   point(10);
   point(11);
   point(12);
+  //remove the first item of the list when you play more than 12 games
+  if (pastScore.size() > 12) pastScore.remove(0);
 }
 
 void point(int order) {
-  fill(white);
+  stroke(lightBlue);
+  fill(lightBlue);
   if (pastScore.size() >= order) circle(50+order*50,725-pastScore.get(order-1)*2,5);
   //connection lines
   //if (order > 1) line(50+(order-1)*50,725-pastScore.get(order-2)*2,50+order*50,725-pastScore.get(order-1)*2);
