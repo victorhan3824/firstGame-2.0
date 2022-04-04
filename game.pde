@@ -12,8 +12,8 @@ void game() {
 
   //pause button
   if (mouseX > 70 && mouseX < 130 && mouseY > 70 && mouseY < 130) stroke(red);
-  else stroke(black);
-  fill(255);
+  else stroke(white);
+  fill(blue);
   rect(100, 100, 60, 60);
 
   //pause indicator
@@ -29,23 +29,23 @@ void game() {
     fill(255);
   }
   stroke(0);
-  circle(x, y, d); 
+  circle(x, y, targetSize); 
 
   //moving
   x = x + (1+float(score)*0.15)*vx;
   y = y + (1+float(score)*0.15)*vy;
 
   //bouncing back
-  if (x < d/2 || x > width-d/2 ) {
+  if (x < targetSize/2 || x > width-targetSize/2 ) {
     vx = vx * -1;
   }
-  if (y < d/2 || y > height-d/2 ) {
+  if (y < targetSize/2 || y > height-targetSize/2 ) {
     vy = vy * -1;
   }
 }
 
 void gameClick() {
-  if (dist(mouseX, mouseY, x, y) < d*0.75) {
+  if (dist(mouseX, mouseY, x, y) < targetSize*0.75) {
     score = score + 1;
     hit = 3;
     //sound effect ======================
