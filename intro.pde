@@ -12,7 +12,7 @@ void intro(){
   
   fill(white);
   textSize(72);
-  text("Aste-rid",width/2,0.375*height);
+  text("Clicker Game",width/2,0.375*height);
 }
 
 void introClick() {
