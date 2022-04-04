@@ -2,7 +2,7 @@ void pause(){
   theme.pause();
   
   noStroke();
-  fill(white);
+  fill(blue);
   square(100,100,50);
   
   fill(gray);
