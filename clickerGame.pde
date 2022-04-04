@@ -26,10 +26,11 @@ int startH, endH, startM, endM, startS, endS;
 //scatter plot variable =================
 IntList pastScore;
 
-float x,y,d;
+float x,y,targetSize;
 float vx, vy; //target velocity
 int score, lives;
 int topScore, gameSum, scoreSum, timeSum; 
+int sliderX;
 
 
 Minim minim;
@@ -61,7 +62,7 @@ void setup() {
   //target initialization
   x = width/2;
   y = height/2;
-  d = 100;
+  targetSize = 50;
   vx = random(-5,5);
   vy = random(-5,5);
   //stat
@@ -73,7 +74,9 @@ void setup() {
   timeSum = 0;
   //past scores
   pastScore = new IntList();
-  //scatter plot variable
+  
+  //Size slider initialization
+  sliderX = 50;
   
   //minim
   minim = new Minim(this);
