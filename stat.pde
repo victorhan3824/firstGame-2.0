@@ -82,13 +82,9 @@ void scatterPlot() {
     i = i + 1;
     startX = startX + 50;
   }
-  
 }
 
 void point(int order) {
   fill(lightBlue);
   if (pastScore.size() >= order) circle(50+order*50,725-pastScore.get(order-1)*2,5);
-  //connection lines
-  //if (order > 1) line(50+(order-1)*50,725-pastScore.get(order-2)*2,50+order*50,725-pastScore.get(order-1)*2);
-  //if (order >= 2) print(pastScore.get(order-2));
 }
