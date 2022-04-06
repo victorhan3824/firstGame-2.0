@@ -56,6 +56,8 @@ void scatterPlot() {
   line(50,725,650,725); //x- axis ==========
   text("Recent Games",332.5,750);
   
+  stroke(lightBlue);
+  
   //data display ===========================
   point(1);
   point(2);
@@ -71,10 +73,19 @@ void scatterPlot() {
   point(12);
   //remove the first item of the list when you play more than 12 games
   if (pastScore.size() > 12) pastScore.remove(0);
+  
+  //connect the lines ================================================
+  int i = 1;
+  int startX = 100;
+  while (i < pastScore.size()) {
+    line(startX, 725-pastScore.get(i-1)*2, startX+50, 725-pastScore.get(i)*2);
+    i = i + 1;
+    startX = startX + 50;
+  }
+  
 }
 
 void point(int order) {
-  stroke(lightBlue);
   fill(lightBlue);
   if (pastScore.size() >= order) circle(50+order*50,725-pastScore.get(order-1)*2,5);
   //connection lines
