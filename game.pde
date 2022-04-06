@@ -21,19 +21,20 @@ void game() {
   fill(gray);
   square(100, 100, 20);
 
-  //display target
+  //display target ==================================
   hit = hit - 1;
   if (hit > 0) {
     fill(red);
   } else {
-    fill(255);
+    noFill();
   }
-  stroke(0);
-  circle(x, y, targetSize); 
+  circle(x, y, targetSize); //draw the circle
+  //draw the image displayed as apart of the target 
+  image(targetMode,x-targetSize/2,y-targetSize/2,targetSize,targetSize); 
 
-  //moving
-  x = x + (1+float(score)*0.15)*vx;
-  y = y + (1+float(score)*0.15)*vy;
+  //moving ==========================================
+  x = x + (1+float(score)*(0.15+float(targetOrder)/20))*vx;
+  y = y + (1+float(score)*(0.15+float(targetOrder)/20))*vy;
 
   //bouncing back
   if (x < targetSize/2 || x > width-targetSize/2 ) {
@@ -46,8 +47,11 @@ void game() {
 
 void gameClick() {
   if (dist(mouseX, mouseY, x, y) < targetSize*0.75) {
-    score = score + 1;
+    score = score + 1 + targetOrder%2;
     hit = 3;
+    if (targetOrder == 2 && score != 0 && score%10 == 0 && lives < 3){ //perks for using asteroid
+      lives = lives + 1;
+    }
     //sound effect ======================
     coin.rewind();
     coin.play();
