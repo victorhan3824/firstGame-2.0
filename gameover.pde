@@ -23,8 +23,7 @@ void gameReset() {
   vy = random(-5, 5);
   //adding this round's score to past scores
   pastScore.append(score);
-  //stat reset ================
-  lives = 3;
+  //score reset ================
   score = 0;
 
 }
