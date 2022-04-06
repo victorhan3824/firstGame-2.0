@@ -17,10 +17,11 @@ final int GAMEOVER = 3;
 final int SELECT   = 4;
 final int STAT     = 5;
 
-PImage space, introBack;
+PImage space, introBack, scrap, dust, rock;
 PFont font;
+PImage targetMode; //decide which target we selected
 
-int hit;
+int hit, targetOrder; //targetOrder is the numbering of the target
 //time variables ========================
 int startH, endH, startM, endM, startS, endS;
 //scatter plot variable =================
@@ -30,8 +31,7 @@ float x,y,targetSize;
 float vx, vy; //target velocity
 int score, lives;
 int topScore, gameSum, scoreSum, timeSum; 
-int sliderX;
-
+int sliderX, unlockStatus; //unlockStatus means how advanced are you and what skins you are allowed to use
 
 Minim minim;
 AudioPlayer theme, coin, bump, gameEnd; 
@@ -67,13 +67,15 @@ void setup() {
   vy = random(-5,5);
   //stat
   score    = 0;
-  lives    = 3;
+  lives    = 3 - targetOrder%2; //the last part is for when target is space scrap
   topScore = 0; 
   gameSum = 0;
   scoreSum = 0; 
   timeSum = 0;
   //past scores
   pastScore = new IntList();
+  //defalut unlocking
+  unlockStatus = 0;
   
   //Size slider initialization
   sliderX = 50;
@@ -89,7 +91,13 @@ void setup() {
   space = loadImage("space.png");
   introBack = loadImage("introBackground.png");
   font = createFont("font.ttf",200);
+  //three playable options
+  scrap = loadImage("scrap.png");
+  dust = loadImage("dust.png");
+  rock = loadImage("rock.png");
   
+  //default target
+  targetMode = dust;
 }
 
 void draw() {
