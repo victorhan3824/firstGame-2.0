@@ -23,6 +23,8 @@ void introClick() {
     startH = hour();
     startM = minute();
     startS = second();
+    //calculate the amount of lives you get
+    lives = 3 - 2*(targetOrder%2); //last part is for when target = space scrap
   }
   if (mouseX > width/4-60 && mouseX < width/4+60 && mouseY > 470 && mouseY < 520) mode = SELECT;
   if (mouseX > width*0.75-60 && mouseX < width*0.75+60 && mouseY > 470 && mouseY < 520) mode = STAT;
